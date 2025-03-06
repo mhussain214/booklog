@@ -26,7 +26,7 @@ function toggleDarkMode() {
     }
 }
 
-// Apply dark mode if previously selected
+// Apply dark mode
 window.onload = function () {
     if (localStorage.getItem("theme") === "dark") {
         document.body.classList.add("dark-mode");
@@ -72,16 +72,21 @@ function displayBooks() {
 
 function changeBookStatus(index, status) {
     myBooks[index].status = status;
+
     if (status === "Completed") {
         let sound = document.getElementById("celebrationSound");
+
         if (sound) {
-            sound.volume = 0.3;
+            sound.volume = 0.3;  // Lower the volume
             sound.play();
         }
+
         alert("Congratulations! You completed a book!");
     }
+
     displayBooks();
 }
+
 
 function removeBook(index) {
     myBooks.splice(index, 1);
